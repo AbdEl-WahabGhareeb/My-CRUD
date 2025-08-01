@@ -40,7 +40,7 @@ export default function Home() {
 
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
-        if (files) {
+        if (name === "image" && files) {
             setFormData((prev) => ({
                 ...prev,
                 [name]: `images/${files[0]?.name}`,
@@ -136,25 +136,19 @@ export default function Home() {
                     <input
                         type="number"
                         id="productPrice"
-                        name="productPrice"
+                        name="price"
                         placeholder="product Price"
                         className="form-control mb-2"
                         value={formData.price}
                         onChange={handleInputChange}
                     />
-                    {errors.price && (
-                        <div className="alert alert-danger text-capitalize">
-                            we accept only numbers, and the price must be
-                            greater than 0 and less than 99999.
-                        </div>
-                    )}
 
                     {/* <!-- ================ Category ================ --> */}
                     <label htmlFor="productCategory">Product Category</label>
                     <input
                         type="text"
                         id="productCategory"
-                        name="productCategory"
+                        name="category"
                         placeholder="product Category"
                         className="form-control mb-2"
                         value={formData.category}
@@ -162,12 +156,10 @@ export default function Home() {
                     />
 
                     {/* <!-- ================ Description ================ --> */}
-                    <label htmlFor="productDescription">
-                        Product Description
-                    </label>
+                    <label htmlFor="productDescription">Product Description</label>
                     <textarea
                         id="productDescription"
-                        name="productDescription"
+                        name="description"
                         placeholder="Product Description"
                         className="form-control mb-2"
                         value={formData.description}
